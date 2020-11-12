@@ -409,6 +409,7 @@ public class ShadowTest {
 ```
 
 ### 3.4.1 Anonymous Classes
+
 - Anonymous classes make code more concise
   - Declare and instantiate a class at the same time
   - They do not have a name: use them if you need to use a local class only once
@@ -433,6 +434,59 @@ public class ShadowTest {
   - The name of an interface to implement or a class to extend. In this example, the anonymous class is implementing the interface HelloWorld.
   - Parentheses that contain the arguments to a constructor. Note: When you implement an interface, there is no constructor, so you use an empty pair of parentheses.
   - A body, which is a class declaration body. More specifically, in the body, method declarations are allowed but statements are not.
+
+### 3.4.2 Lambda Expressions and Stream
+
+#### Introduction
+
+#### Lambda Expressions
+
+- `(type parameters) -> {statements;}`
+- Treat functionality as method argument, or code as data
+- Some parts are optional if possible
+  - Parameter types
+  - Parentheses
+  - Braces
+  - return
+- Variable scope
+  - The same scope as its enclosing scope
+  - access local variables and parameters of the enclosing scope that are final of effectively final
+- Standard functional interfaces
+
+#### Stream
+- Aggregate operation: computing a single value from a collection of values
+  - Results may be primitive value, void or an object
+- A stream is a sequence of data elements supporting sequential and parallel aggregate operations
+
+**Creating streams**
+- From values: `Stream.of(T...)`
+- Empty streams: `Stream.empty()`
+- From arrays: `Arrays.stream(T[] array)`
+- From collections: `Collection.stream()`
+
+**Immediate operations**
+
+- filter()
+- map()
+- sorted()
+- limit()
+
+**Terminal operations**
+
+- min()
+- max()
+- count()
+- findAny()
+- toArray()
+- collect()
+
+#### Best Practice
+- Prefer lambdas to anonymous classes
+- Prefer method references to lambdas
+- Favor the use of standard functional interfaces
+  - Declare a new interface only necessary
+- Prefer Collection to Stream as a return type
+- Be careful when making streams parallel
 
 ## 3.5 Enum Types
 
@@ -1156,15 +1210,30 @@ warnings that it would otherwise generate
 
 ## 9.2 List Interface
 
+[document](https://docs.oracle.com/javase/tutorial/collections/interfaces/list.html)
+
 ## 9.3 Set Interface
+
+[document](https://docs.oracle.com/javase/tutorial/collections/interfaces/set.html)
 
 ## 9.4 Map Interface
 
+[document](https://docs.oracle.com/javase/tutorial/collections/interfaces/map.html)
+
 ## 9.5 Queue Interface
+
+[document](https://docs.oracle.com/javase/tutorial/collections/interfaces/queue.html)
 
 ## 9.6 Deque Interface
 
+[document](https://docs.oracle.com/javase/tutorial/collections/interfaces/deque.html)
+
 ## 9.7 Utilities
+
+- `sort(List<T> list)`
+- `fill(List<? super T> list, T obj)`
+- `copy(List<? super T> dest, List<? extends T> src)`
+- `unmodifiableList(List<? extends T> list)`
 
 ## 9.8 Collection Initialization
 
@@ -1175,22 +1244,3 @@ warnings that it would otherwise generate
 - Double-brace init
 - Collections
 
-# 10 Lambda Expressions and Stream
-
-## 10.1 Introduction
-
-## 10.2 Lambda Expressions
-
-- `(type parameters) -> {statements;}`
-- Treat functionality as method argument, or code as data
-- Some parts are optional if possible
-  - Parameter types
-  - Parentheses
-  - Braces
-  - return
-- Variable scope
-  - The same scope as its enclosing scope
-  - access local variables and parameters of the enclosing scope that are final of effectively final
-- Standard functional interfaces
-
-## 10.3 Stream
